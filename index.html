@@ -67,7 +67,8 @@ h2 svg{width:30px;height:30px;flex:none}
 /* Tin tức */
 .news{padding:4px 20px}
 .nr{padding:14px 0;border-bottom:2px dashed rgba(43,43,53,.18)}.nr:last-child{border-bottom:0}
-.nr h3{margin:0;font-size:17px;line-height:1.3;font-weight:800}
+.nr h3{margin:0 0 5px;font-size:17px;line-height:1.3;font-weight:800}
+.nr h3 a{color:var(--ink);text-decoration:none;border-bottom:2px solid transparent}.nr h3 a:hover{color:var(--red);border-bottom-color:var(--red)}
 .nr a.og{display:inline-block;margin:3px 0 6px;font-size:12.5px;color:var(--od);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;word-break:break-word}
 .nr a.og:hover{color:var(--red)}
 .nr p{margin:0;font-size:14px;color:#4b4a52}
@@ -184,7 +185,7 @@ const esc=s=>String(s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&g
 /* tin tức: 4 tin đã dịch + tóm tắt; tin đầu tiên là tin nổi bật */
 const T=(D.tin&&D.tin.tin)||[];
 $("hot").innerHTML=T.length?`<span class="tagn">TIN NỔI BẬT</span><a href="#tin">${esc(T[0].tieu_de_vi)}</a>`:"";
-$("news").innerHTML=T.length?T.map(t=>`<div class="nr"><h3>${esc(t.tieu_de_vi)}</h3><a class="og" href="${esc(t.link)}" target="_blank" rel="noopener">${esc(t.tieu_de)}</a><p>${esc(t.tom_tat)}</p></div>`).join(""):`<p class="hint" style="padding:12px 0">Chưa có tin.</p>`;
+$("news").innerHTML=T.length?T.map(t=>`<div class="nr"><h3><a href="${esc(t.link)}" target="_blank" rel="noopener">${esc(t.tieu_de_vi)}</a></h3><p>${esc(t.tom_tat)}</p></div>`).join(""):`<p class="hint" style="padding:12px 0">Chưa có tin.</p>`;
 /* Random Card */
 const C=D.chase||{the:[]};
 const srcLink=(c,s)=>{const L=c.links||{};return L[(s||"").toLowerCase()]||L.snkrdunk||""};
